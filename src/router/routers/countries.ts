@@ -1,4 +1,4 @@
-import Countries from '@/views/Countries.vue'
+import Countries from '@/views/Countries/index.vue'
 
 export const COUNTRIES_ROUTER_PATH = '/'
 export const COUNTRIES_ROUTER_NAME = 'countries'

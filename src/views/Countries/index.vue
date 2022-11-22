@@ -1,7 +1,7 @@
 <template>
   <v-container class="countries">
     <v-row no-gutters>
-      <v-col xs12 sm12 md6 lg6 xl6>
+      <v-col xs="12" sm="12" md="6" lg="6" xl="6">
         <h1 class="countries__title secondary--text">Conheça o Covidômetro</h1>
         <h5 class="countries__sub-title secondary--text">
           Fique atualizado com velocidade e transparência.
@@ -10,16 +10,24 @@
           a pandemia da COVID-19 ao redor do mundo.
         </h5>
       </v-col>
-      <v-col xs12 sm12 md6 lg6 xl6></v-col>
+      </v-row>
+      <v-row no-gutters>
+      <v-col col="12" sm="12" md="8" lg="8" xl="8" offset-md="2" offset-lg="2" offset-xl="2" class="pt-10 mt-10">
+        <CountriesSearch></CountriesSearch>
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import CountriesSearch from './CountriesSearch.vue'
 
 export default Vue.extend({
-  name: 'Countries'
+  name: 'Countries',
+  components: {
+    CountriesSearch
+  }
 })
 </script>
 
