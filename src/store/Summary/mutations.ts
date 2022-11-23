@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import { SummaryState } from './state'
 import { Countries, Global, Order } from '@/types/SummaryTypes'
 
@@ -15,7 +16,7 @@ export default {
     state.order = order
   },
   SET_SEARCH (state: SummaryState, search: string): void {
-    state.search = search
+    Vue.set(state, 'search', search)
   },
   SET_ERROR (state: SummaryState, error: boolean): void {
     state.error = error

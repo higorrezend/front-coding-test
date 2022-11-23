@@ -13,7 +13,7 @@ const countriesState: SummaryState = {
   countries: [],
   loading: false,
   error: false,
-  order: Order.DEFAULT
+  order: Order.ALPHABETICAL_ASC
 }
 
 export default countriesState

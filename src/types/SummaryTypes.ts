@@ -29,8 +29,10 @@ export interface Global {
 
 export enum Order {
   DEFAULT = 'default',
-  ALPHABETICAL = 'alphabetical',
-  NUMBER_OF_CASES = 'number-of-cases'
+  ALPHABETICAL_ASC = 'alphabetical-asc',
+  ALPHABETICAL_DESC = 'alphabetical-desc',
+  NUMBER_OF_CASES_ASC = 'number-of-cases-asc',
+  NUMBER_OF_CASES_DESC = 'number-of-cases-desc'
 }
 
 export interface Summary {
