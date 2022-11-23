@@ -1,11 +1,12 @@
-import { Countries, Global, Order } from '@/types/SummaryTypes'
+import { SUMMARY_PER_PAGE_NUMBER } from '@/constants/summary'
+import { Countries, Global, Order, Error } from '@/types/SummaryTypes'
 
 export interface SummaryState {
   countries: Countries
   loading: boolean
-  error: boolean
-  global?: Global,
-  order: Order,
+  error: Error
+  global?: Global
+  order: Order
   search?: string
   page: number
   perPage: number
@@ -14,10 +15,12 @@ export interface SummaryState {
 const countriesState: SummaryState = {
   countries: [],
   loading: false,
-  error: false,
+  error: {
+    status: false
+  },
   order: Order.ALPHABETICAL_ASC,
   page: 1,
-  perPage: 10
+  perPage: SUMMARY_PER_PAGE_NUMBER
 }
 
 export default countriesState

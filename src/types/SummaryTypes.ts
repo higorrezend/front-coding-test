@@ -35,6 +35,13 @@ export enum Order {
   NUMBER_OF_CASES_DESC = 'number-of-cases-desc'
 }
 
+export interface Error {
+  id?: number
+  status: boolean
+  title?: string
+  message?: string
+}
+
 export interface Summary {
   Global?: Global
   Countries?: Countries

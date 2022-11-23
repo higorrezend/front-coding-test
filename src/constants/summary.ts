@@ -1,0 +1,1 @@
+export const SUMMARY_PER_PAGE_NUMBER = 10
