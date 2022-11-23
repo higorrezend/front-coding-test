@@ -7,6 +7,7 @@
       <v-row>
         <v-col col="12" sm="12" md="10" lg="10" xl="10" offset-md="1" offset-lg="1" offset-xl="1">
           <v-text-field
+            v-model="search"
             prepend-inner-icon="search"
             color="primary"
             placeholder="Digite o nome do país"
@@ -22,6 +23,16 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'SummaryCountriesSearch'
+  name: 'SummaryCountriesSearch',
+  computed: {
+    search: {
+      get () {
+        return this.$store.state.Summary.search
+      },
+      set (value: string): void {
+        this.$store.commit('Summary/SET_SEARCH', value)
+      }
+    }
+  }
 })
 </script>

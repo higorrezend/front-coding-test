@@ -4,7 +4,7 @@
       {{ label }}
     </div>
     <div class="card-statistic__number primary--text mt-5 d-flex justify-center">
-      {{ number | number }}
+      {{ number | number }}{{ appendNumber }}
     </div>
   </div>
 </template>
@@ -29,6 +29,10 @@ export default Vue.extend({
     number: {
       type: Number,
       default: 0
+    },
+    appendNumber: {
+      type: String,
+      default: ''
     },
     route: {
       type: Object,

@@ -1,14 +1,19 @@
 <template>
   <div>
-    <v-card class="summary-countries-search elevation-1 pa-2">
+    <v-card
+      v-for="country in countriesFormated"
+      :key="country.id"
+      class="summary-countries-search elevation-1 pa-2 mb-5"
+    >
       <v-card-text>
         <h2 class="secondary--text mt-5 mb-5 d-flex justify-center">
-          Country Name
+          {{ country.Country }}
         </h2>
         <v-row>
           <v-col cols="12" sm="4" md="4" lg="4" xl="4">
             <CardStatistic
               label="Total de casos"
+              :number="country.TotalConfirmed"
               :route="{name: 'asdasd'}"
             ></CardStatistic>
           </v-col>
@@ -16,12 +21,15 @@
           <v-col cols="12" sm="4" md="4" lg="4" xl="4">
             <CardStatistic
               label="Mortes"
+              :number="country.TotalDeaths"
             ></CardStatistic>
           </v-col>
           <v-divider :vertical="!$vuetify.breakpoint.xs" :inset="!$vuetify.breakpoint.xs"></v-divider>
           <v-col cols="12" sm="4" md="4" lg="4" xl="4">
             <CardStatistic
               label="Fatalidade"
+              :number="country.fatalities"
+              appendNumber="%"
             ></CardStatistic>
           </v-col>
         </v-row>
@@ -32,10 +40,14 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 import CardStatistic from '@/components/atoms/CardStatistic.vue'
 
 export default Vue.extend({
   name: 'SummaryCountriesList',
+  computed: {
+    ...mapGetters('Summary', ['countriesFormated'])
+  },
   components: {
     CardStatistic
   }

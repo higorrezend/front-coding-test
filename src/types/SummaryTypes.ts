@@ -10,6 +10,7 @@ export interface Country {
   NewRecovered: number
   TotalRecovered: number
   Date: Date
+  fatalities: number
 }
 
 export interface Countries {
