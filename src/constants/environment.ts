@@ -1,0 +1,1 @@
+export const COVID19_API_BASE_URL = process.env.VUE_APP_COVID19_API_BASE_URL

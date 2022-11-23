@@ -24,11 +24,18 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapActions } from 'vuex'
 import CountriesList from './CountriesList.vue'
 import CountriesSearch from './CountriesSearch.vue'
 
 export default Vue.extend({
   name: 'Countries',
+  methods: {
+    ...mapActions('Summary', ['getCountriesSumary'])
+  },
+  mounted () {
+    this.getCountriesSumary()
+  },
   components: {
     CountriesList,
     CountriesSearch

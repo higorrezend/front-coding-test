@@ -16,5 +16,8 @@ export default {
   },
   SET_SEARCH (state: SummaryState, search: string): void {
     state.search = search
+  },
+  SET_ERROR (state: SummaryState, error: boolean): void {
+    state.error = error
   }
 }

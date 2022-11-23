@@ -31,3 +31,10 @@ export enum Order {
   ALPHABETICAL = 'alphabetical',
   NUMBER_OF_CASES = 'number-of-cases'
 }
+
+export interface Summary {
+  Global?: Global
+  Countries?: Countries
+  Date?: Date
+  Status: boolean
+}
