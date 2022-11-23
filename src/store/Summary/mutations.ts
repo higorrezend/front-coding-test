@@ -20,5 +20,8 @@ export default {
   },
   SET_ERROR (state: SummaryState, error: boolean): void {
     state.error = error
+  },
+  SET_PER_PAGE (state: SummaryState, perPage: number): void {
+    state.perPage = perPage
   }
 }

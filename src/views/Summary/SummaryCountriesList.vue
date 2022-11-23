@@ -35,18 +35,32 @@
         </v-row>
       </v-card-text>
     </v-card>
+    <v-btn
+      block
+      large
+      color="primary"
+      v-if="countriesFormated.length > 0"
+      :disabled="countriesFormated.length < perPage"
+      @click="loadMoreCountries()"
+    >
+      Carregar mais países
+    </v-btn>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import CardStatistic from '@/components/atoms/CardStatistic.vue'
 
 export default Vue.extend({
   name: 'SummaryCountriesList',
   computed: {
+    ...mapState('Summary', ['perPage']),
     ...mapGetters('Summary', ['countriesFormated'])
+  },
+  methods: {
+    ...mapActions('Summary', ['loadMoreCountries'])
   },
   components: {
     CardStatistic

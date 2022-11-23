@@ -34,7 +34,7 @@ const searchInCountries = (countries: Array<Country>, search: string | undefined
   return countries
 }
 
-const reorderCountries = (countries: Array<Country>, order: string): any => {
+const reorderCountries = (countries: Array<Country>, order: string): Array<Country> => {
   switch (order) {
     case Order.ALPHABETICAL_ASC:
       return sortArrayAlphabetically(countries, 'Country', 'ASC')
@@ -50,7 +50,7 @@ const reorderCountries = (countries: Array<Country>, order: string): any => {
 }
 
 export default {
-  countriesFormated: ({ countries, search, order }: SummaryState): Countries => {
-    return paginate(reorderCountries(searchInCountries(formatCountries(countries), search), order), 20, 1)
+  countriesFormated: ({ countries, search, order, page, perPage }: SummaryState): Countries => {
+    return paginate(reorderCountries(searchInCountries(formatCountries(countries), search), order), perPage, page)
   }
 }
