@@ -1,9 +1,9 @@
 <template>
-  <div :class="{'countries-list__has-route': route}" @click="toToRoute()">
-    <div class="countries-list__label secondary--text mt-5 d-flex justify-center">
+  <div :class="{'card-statistic__has-route': route}" @click="toToRoute()">
+    <div class="card-statistic__label secondary--text mt-5 d-flex justify-center">
       {{ label }}
     </div>
-    <div class="countries-list__number primary--text mt-5 d-flex justify-center">
+    <div class="card-statistic__number primary--text mt-5 d-flex justify-center">
       {{ number | number }}
     </div>
   </div>
@@ -39,15 +39,15 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-  .countries-list__label {
+  .card-statistic__label {
     font-size: 18px;
     font-weight: bold;
   }
-  .countries-list__number {
+  .card-statistic__number {
     font-size: 30px;
     font-weight: bold;
   }
-  .countries-list__has-route {
+  .card-statistic__has-route {
     cursor: pointer;
   }
 </style>

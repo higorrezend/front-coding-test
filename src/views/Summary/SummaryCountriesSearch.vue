@@ -1,5 +1,5 @@
 <template>
-  <v-card class="countries-search elevation-1 pa-2">
+  <v-card class="summary-countries-search elevation-1 pa-2">
     <h2 class="secondary--text mt-5 d-flex justify-center">
       Filtrar dados sobre um país
     </h2>
@@ -22,6 +22,6 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'CountriesSearch'
+  name: 'SummaryCountriesSearch'
 })
 </script>

@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import countries, { COUNTRIES_ROUTER_NAME } from './routers/countries'
+import summary, { SUMMARY_ROUTER_NAME } from './routers/summary'
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
-  countries,
+  summary,
   {
     path: '*',
     redirect: {
-      name: COUNTRIES_ROUTER_NAME
+      name: SUMMARY_ROUTER_NAME
     }
   }
 ]

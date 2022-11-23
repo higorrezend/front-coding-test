@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card class="countries-search elevation-1 pa-2">
+    <v-card class="summary-countries-search elevation-1 pa-2">
       <v-card-text>
         <h2 class="secondary--text mt-5 mb-5 d-flex justify-center">
           Country Name
@@ -35,7 +35,7 @@ import Vue from 'vue'
 import CardStatistic from '@/components/atoms/CardStatistic.vue'
 
 export default Vue.extend({
-  name: 'CountriesList',
+  name: 'SummaryCountriesList',
   components: {
     CardStatistic
   }
@@ -43,7 +43,7 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-  .countries-search h2 {
+  .summary-countries-search h2 {
     font-size: 28px;
     font-weight: bold;
   }

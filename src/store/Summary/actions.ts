@@ -3,7 +3,7 @@ import { Summary } from '@/types/SummaryTypes'
 import { Commit } from 'vuex'
 
 export default {
-  async getCountriesSumary ({ commit }: { commit: Commit }): Promise<void> {
+  async getSumaryDataFromApi ({ commit }: { commit: Commit }): Promise<void> {
     commit('TOGGLE_LOADING')
     try {
       const { Global, Countries }: Summary = await (new SummaryApiService()).getSummary()
