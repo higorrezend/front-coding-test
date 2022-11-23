@@ -5,7 +5,7 @@
     </h2>
     <v-card-text>
       <v-row>
-        <v-col col="12" sm="12" md="10" lg="10" xl="10" offset-md="1" offset-lg="1" offset-xl="1">
+        <v-col col="12" sm="12" md="5" lg="6" xl="6" offset-md="1" offset-lg="1" offset-xl="1">
           <v-text-field
             v-model="search"
             prepend-inner-icon="search"
@@ -14,6 +14,13 @@
             autofocus
           ></v-text-field>
         </v-col>
+        <v-col col="12" sm="12" md="5" lg="4" xl="4">
+          <v-select
+            v-model="order"
+            :items="orderOptions"
+            label="Ordenar por:"
+          ></v-select>
+        </v-col>
       </v-row>
     </v-card-text>
   </v-card>
@@ -21,16 +28,26 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 
 export default Vue.extend({
   name: 'SummaryCountriesSearch',
   computed: {
+    ...mapGetters('Summary', ['orderOptions']),
     search: {
       get () {
         return this.$store.state.Summary.search
       },
       set (value: string): void {
         this.$store.commit('Summary/SET_SEARCH', value)
+      }
+    },
+    order: {
+      get () {
+        return this.$store.state.Summary.order
+      },
+      set (value: string): void {
+        this.$store.commit('Summary/SET_ORDER', value)
       }
     }
   }

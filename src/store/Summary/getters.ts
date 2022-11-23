@@ -1,6 +1,6 @@
 import { SummaryState } from './state'
 import paginate from '@/utils/ArrayPaginate'
-import { Countries, Country, Order } from '@/types/SummaryTypes'
+import { Countries, Country, Order, OrderOption } from '@/types/SummaryTypes'
 import sortArrayAlphabetically from '@/utils/sortArrayAlphabetically'
 
 const formatCountries = (countries: Countries): Array<Country> => {
@@ -52,5 +52,25 @@ const reorderCountries = (countries: Array<Country>, order: string): Array<Count
 export default {
   countriesFormated: ({ countries, search, order, page, perPage }: SummaryState): Countries => {
     return paginate(reorderCountries(searchInCountries(formatCountries(countries), search), order), perPage, page)
+  },
+  orderOptions: (): Array<OrderOption> => {
+    return [
+      {
+        text: 'Nome do país',
+        value: Order.ALPHABETICAL_ASC
+      },
+      {
+        text: 'Nome do país descrescente',
+        value: Order.ALPHABETICAL_DESC
+      },
+      {
+        text: 'Maior número de casos',
+        value: Order.NUMBER_OF_CASES_DESC
+      },
+      {
+        text: 'Menor número de casos',
+        value: Order.NUMBER_OF_CASES_ASC
+      }
+    ]
   }
 }

@@ -18,7 +18,7 @@ const countriesState: SummaryState = {
   error: {
     status: false
   },
-  order: Order.ALPHABETICAL_ASC,
+  order: Order.NUMBER_OF_CASES_DESC,
   page: 1,
   perPage: SUMMARY_PER_PAGE_NUMBER
 }
