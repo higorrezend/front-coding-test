@@ -17,5 +17,6 @@ export default Vue.extend({
     text-align: center;
     display: block;
     font-size: 15px;
+    margin-top: 30px;
   }
 </style>

@@ -32,7 +32,13 @@
             <span>Fechar janela</span>
           </v-tooltip>
         </v-app-bar>
-        <v-card-text class="country-confirmed-cases_footer__content">
+        <v-card-text v-if="loading">
+          <Loading message="Buscando casos confirmados nos últimos 5 dias..."/>
+        </v-card-text>
+        <v-card-text v-else-if="error.status">
+          <LoadDataError :error="error" @refresh="getCountryStatusConfirmed"/>
+        </v-card-text>
+        <v-card-text v-else class="country-confirmed-cases_footer__content">
           <CountryCasesContent/>
           <Covid19APIFooterVue/>
         </v-card-text>
@@ -43,7 +49,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import Loading from '@/components/atoms/Loading.vue'
 import CountryCasesContent from './CountryCasesContent.vue'
+import LoadDataError from '@/components/atoms/LoadDataError.vue'
 import Covid19APIFooterVue from '@/components/atoms/Covid19APIFooter.vue'
 import { mapState, mapActions } from 'vuex'
 
@@ -53,7 +61,7 @@ export default Vue.extend({
     dialog: true
   }),
   computed: {
-    ...mapState('CountryStatus', ['loading'])
+    ...mapState('CountryStatus', ['loading', 'error'])
   },
   methods: {
     ...mapActions('CountryStatus', ['getCountryStatusConfirmedDataFromApi', 'clearCountryStatus']),
@@ -74,6 +82,8 @@ export default Vue.extend({
     this.clearCountryStatus()
   },
   components: {
+    Loading,
+    LoadDataError,
     Covid19APIFooterVue,
     CountryCasesContent
   }

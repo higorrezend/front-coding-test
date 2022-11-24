@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card class="summary-error elevation-0 pa-2 mb-5" color="transparent">
+    <v-card v-if="error.status" class="load-data-error-error elevation-0 pa-2 mb-5" color="transparent">
       <v-card-text>
         <v-row>
           <v-col cols="12">
@@ -13,8 +13,8 @@
             </h3>
             <span>Código do erro: {{ error.id }}</span>
           </v-col>
-          <v-col>
-            <v-btn outlined color="primary" @click="getSummaryDataFromApi()">
+          <v-col v-if="refresh">
+            <v-btn outlined color="primary" @click="refresh()">
               Tentar buscar dados novamente
             </v-btn>
           </v-col>
@@ -26,24 +26,33 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapState, mapActions } from 'vuex'
 
 export default Vue.extend({
-  name: 'SummaryError',
-  computed: {
-    ...mapState('Summary', ['error'])
-  },
+  name: 'LoadDataError',
   methods: {
-    ...mapActions('Summary', ['getSummaryDataFromApi'])
+    refresh (): void {
+      this.$emit('refresh')
+    }
+  },
+  props: {
+    error: {
+      type: Object,
+      default: () => ({
+        id: null,
+        title: null,
+        status: false,
+        message: null
+      })
+    }
   }
 })
 </script>
 
 <style scoped>
-  .summary-error {
+  .load-data-error-error {
     text-align: center;
   }
-  .summary-error h2 {
+  .load-data-error-error h2 {
     font-size: 28px;
     font-weight: bold;
     margin-top: 30px;

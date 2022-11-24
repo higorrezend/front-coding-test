@@ -15,12 +15,12 @@
     </v-row>
     <v-row v-if="loading">
       <v-col cols="12">
-        <SummaryLoading/>
+        <Loading message="Buscando lista de países, por favor aguarde..."/>
       </v-col>
     </v-row>
     <v-row v-else-if="error.status">
       <v-col cols="12">
-        <SummaryError/>
+        <LoadDataError :error="error" @refresh="getSummaryDataFromApi"/>
       </v-col>
     </v-row>
     <v-row v-else no-gutters class="mb-15">
@@ -30,8 +30,6 @@
       <v-col cols="12" sm="12" md="8" lg="8" xl="8" offset-md="2" offset-lg="2" offset-xl="2" class="pt-10">
         <SummaryCountriesList></SummaryCountriesList>
       </v-col>
-    </v-row>
-    <v-row v-if="!loading">
       <v-col cols="12">
         <Covid19APIFooterVue/>
       </v-col>
@@ -43,8 +41,8 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
-import SummaryError from './SummaryError.vue'
-import SummaryLoading from './SummaryLoading.vue'
+import LoadDataError from '@/components/atoms/LoadDataError.vue'
+import Loading from '@/components/atoms/Loading.vue'
 import SummaryCountriesList from './SummaryCountriesList.vue'
 import SummaryCountriesSearch from './SummaryCountriesSearch.vue'
 import Covid19APIFooterVue from '@/components/atoms/Covid19APIFooter.vue'
@@ -61,8 +59,8 @@ export default Vue.extend({
     this.getSummaryDataFromApi()
   },
   components: {
-    SummaryError,
-    SummaryLoading,
+    LoadDataError,
+    Loading,
     SummaryCountriesList,
     SummaryCountriesSearch,
     Covid19APIFooterVue
