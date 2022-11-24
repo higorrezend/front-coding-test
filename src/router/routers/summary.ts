@@ -1,5 +1,5 @@
 import Summary from '@/views/Summary/index.vue'
-import countryConfirmedCases from '@/router/routers/countryConfirmedCases'
+import countryCases from './countryCases'
 
 export const SUMMARY_ROUTER_PATH = '/'
 export const SUMMARY_ROUTER_NAME = 'summary'
@@ -12,6 +12,6 @@ export default {
     title: 'Resumo de países'
   },
   children: [
-    countryConfirmedCases
+    countryCases
   ]
 }

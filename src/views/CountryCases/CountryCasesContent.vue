@@ -20,10 +20,14 @@
           <tbody>
             <tr v-for="(country, countryIndex) in mock" :key="countryIndex">
               <td class="country-confirmed-cases-content__date">
-                <strong class="country-confirmed-cases-content__date">{{ country.Date | date('DD/MM/YYYY') }}</strong>
+                <strong class="country-confirmed-cases-content__date">
+                  {{ country.Date | date('DD/MM/YYYY') }}
+                </strong>
               </td>
               <td class="country-confirmed-cases-content__cases">
-                <strong class="country-confirmed-cases-content__cases">{{ country.Cases }}</strong>
+                <strong class="country-confirmed-cases-content__cases">
+                  {{ country.Cases }}
+                </strong>
               </td>
             </tr>
           </tbody>
@@ -37,7 +41,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'CountryConfirmedCasesContent',
+  name: 'CountryCasesContent',
   data: () => ({
     mock: JSON.parse(`[
       {

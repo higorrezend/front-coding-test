@@ -31,7 +31,7 @@
           </v-tooltip>
         </v-app-bar>
         <v-card-text>
-          <CountryConfirmedCasesContent/>
+          <CountryCasesContent/>
         </v-card-text>
         <Covid19APIFooterVue/>
       </v-card>
@@ -41,8 +41,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import CountryCasesContent from './CountryCasesContent.vue'
 import Covid19APIFooterVue from '@/components/atoms/Covid19APIFooter.vue'
-import CountryConfirmedCasesContent from './CountryConfirmedCasesContent.vue'
 
 export default Vue.extend({
   name: 'CountryConfirmedCases',
@@ -59,7 +59,7 @@ export default Vue.extend({
   },
   components: {
     Covid19APIFooterVue,
-    CountryConfirmedCasesContent
+    CountryCasesContent
   }
 })
 </script>

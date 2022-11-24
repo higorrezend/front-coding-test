@@ -38,12 +38,7 @@
                 outlined
                 small
                 link
-                :to="{
-                  name: 'country-confirmed-cases',
-                  params: {
-                    country: country.Country
-                  }
-                }"
+                :to="getCountryRoute(country.Country)"
               >
                 <v-icon>search</v-icon>
                 <span>Ver Últimos casos confirmados</span>
@@ -68,6 +63,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { COUNTRY_CASES_ROUTER_NAME } from '@/router/routers/countryCases'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import SummaryCountriesListNotFound from './SummaryCountriesListNotFound.vue'
 import CardStatistic from '@/components/atoms/CardStatistic.vue'
@@ -79,7 +75,15 @@ export default Vue.extend({
     ...mapGetters('Summary', ['countriesFormated'])
   },
   methods: {
-    ...mapActions('Summary', ['loadMoreCountries'])
+    ...mapActions('Summary', ['loadMoreCountries']),
+    getCountryRoute (countryName: string) {
+      return {
+        name: COUNTRY_CASES_ROUTER_NAME,
+        params: {
+          country: countryName
+        }
+      }
+    }
   },
   components: {
     CardStatistic,

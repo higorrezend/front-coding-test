@@ -31,7 +31,7 @@
         <SummaryCountriesList></SummaryCountriesList>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row v-if="!loading">
       <v-col cols="12">
         <Covid19APIFooterVue/>
       </v-col>
