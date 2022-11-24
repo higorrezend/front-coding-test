@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 import { Covid19ApiService } from './Covid19ApiService'
 import { CountryStatus } from '@/types/CountryStatusTypes'
+import { COUNTRY_STATUS_DATE_INTERVAL } from '@/constants/countryStatus'
 
 export class CountryStatusConfirmedApiService extends Covid19ApiService {
   protected uri = '/total/country/{countryName}/status/confirmed'
@@ -15,8 +16,7 @@ export class CountryStatusConfirmedApiService extends Covid19ApiService {
 
   private getCountryStatusParams () {
     const date = new Date()
-    const dateInterval = 6
-    date.setDate(date.getDate() - dateInterval)
+    date.setDate(date.getDate() - COUNTRY_STATUS_DATE_INTERVAL)
     return {
       from: `${dayjs(date).format('YYYY-MM-DD')}T00:00:00Z`,
       to: `${dayjs(new Date()).format('YYYY-MM-DD')}T00:00:00Z`

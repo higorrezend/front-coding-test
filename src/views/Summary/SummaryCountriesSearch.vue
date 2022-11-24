@@ -1,12 +1,13 @@
 <template>
   <v-card class="summary-countries-search elevation-1 pa-2">
-    <h2 class="secondary--text mt-5 d-flex justify-center">
+    <h2 id="summary-countries-search__title" class="secondary--text mt-5 d-flex justify-center">
       Filtrar dados sobre um país
     </h2>
     <v-card-text>
       <v-row>
         <v-col cols="12" sm="12" md="5" lg="6" xl="6" offset-md="1" offset-lg="1" offset-xl="1">
           <v-text-field
+            id="summary-countries-search__text-field"
             v-model="search"
             prepend-inner-icon="search"
             color="primary"
@@ -16,6 +17,7 @@
         </v-col>
         <v-col cols="12" sm="12" md="5" lg="4" xl="4">
           <v-select
+            class="summary-countries-search__select-order"
             v-model="order"
             :items="orderOptions"
             label="Ordenar por:"

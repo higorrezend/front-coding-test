@@ -4,12 +4,29 @@
       <v-card
         v-for="country in countriesFormated"
         :key="country.id"
-        class="summary-countries-search elevation-1 pa-2 mb-5"
+        class="summary-countries-list elevation-1 pa-2 mb-5"
       >
-        <v-card-text>
-          <h2 class="secondary--text mt-5 mb-8 d-flex justify-center">
-            {{ country.Country }}
-          </h2>
+        <v-card-text class="mb-3">
+
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                text
+                block
+                x-large
+                v-bind="attrs"
+                v-on="on"
+                class="summary-countries-list__country-name-btn mb-8"
+                link
+                :to="getCountryRoute(country.Slug)"
+              >
+                <h2 id="summary-countries-list__country-name" class="secondary--text d-flex justify-center">
+                  {{ country.Country }}
+                </h2>
+              </v-btn>
+            </template>
+            <span>Ver Últimos casos confirmados</span>
+          </v-tooltip>
           <v-row>
             <v-col cols="12" sm="4" md="4" lg="4" xl="4">
               <CardStatistic
@@ -31,18 +48,6 @@
                 :number="country.fatalities"
                 appendNumber="%"
               ></CardStatistic>
-            </v-col>
-            <v-col cols="12" class="mt-5" style="text-align: center;">
-              <v-btn
-                color="secondary"
-                outlined
-                small
-                link
-                :to="getCountryRoute(country.Slug)"
-              >
-                <v-icon>search</v-icon>
-                <span>Ver Últimos casos confirmados</span>
-              </v-btn>
             </v-col>
           </v-row>
         </v-card-text>
@@ -93,8 +98,11 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-  .summary-countries-search h2 {
+  .summary-countries-list h2 {
     font-size: 28px;
     font-weight: bold;
+  }
+  .summary-countries-list__country-name-btn {
+    text-transform: capitalize;
   }
 </style>

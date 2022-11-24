@@ -1,11 +1,12 @@
 <template>
   <v-app>
     <v-app-bar app color="white" class="app__app-bar">
-      <v-img src="assets/img/logo/covidometro-logo.png" max-width="180px"></v-img>
+      <v-img id="app__covidometro-logo" src="assets/img/logo/covidometro-logo.png" max-width="180px"></v-img>
       <v-spacer></v-spacer>
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn
+            id="app__refresh-btn"
             icon
             @click="getSummaryDataFromApi()"
             :loading="loading"
