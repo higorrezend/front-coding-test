@@ -2,6 +2,21 @@
   <v-app>
     <v-app-bar app color="white" class="app__app-bar">
       <v-img src="assets/img/logo/covidometro-logo.png" max-width="180px"></v-img>
+      <v-spacer></v-spacer>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            icon
+            @click="getSummaryDataFromApi()"
+            :loading="loading"
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon>refresh</v-icon>
+          </v-btn>
+        </template>
+        <span>Atualizar lista de países</span>
+      </v-tooltip>
     </v-app-bar>
     <v-main class="app__content">
       <router-view/>
@@ -11,9 +26,16 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapState, mapActions } from 'vuex'
 
 export default Vue.extend({
-  name: 'App'
+  name: 'App',
+  computed: {
+    ...mapState('Summary', ['loading'])
+  },
+  methods: {
+    ...mapActions('Summary', ['getSummaryDataFromApi'])
+  }
 })
 </script>
 

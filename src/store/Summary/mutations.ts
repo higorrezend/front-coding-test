@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { SummaryState } from './state'
-import { Countries, Global, Order } from '@/types/SummaryTypes'
+import { Countries, Global, Order, Error } from '@/types/SummaryTypes'
 
 export default {
   SET_COUNTRIES (state: SummaryState, countries: Countries): void {
@@ -18,7 +18,10 @@ export default {
   SET_SEARCH (state: SummaryState, search: string): void {
     Vue.set(state, 'search', search)
   },
-  SET_ERROR (state: SummaryState, error: boolean): void {
+  SET_ERROR (state: SummaryState, error: Error): void {
     state.error = error
+  },
+  SET_PER_PAGE (state: SummaryState, perPage: number): void {
+    state.perPage = perPage
   }
 }
