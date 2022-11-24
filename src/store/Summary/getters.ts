@@ -1,6 +1,6 @@
 import { SummaryState } from './state'
 import paginate from '@/utils/ArrayPaginate'
-import { Countries, Country, Order } from '@/types/SummaryTypes'
+import { Countries, Country, Order, OrderOption } from '@/types/SummaryTypes'
 import sortArrayAlphabetically from '@/utils/sortArrayAlphabetically'
 
 const formatCountries = (countries: Countries): Array<Country> => {
@@ -34,7 +34,7 @@ const searchInCountries = (countries: Array<Country>, search: string | undefined
   return countries
 }
 
-const reorderCountries = (countries: Array<Country>, order: string): any => {
+const reorderCountries = (countries: Array<Country>, order: string): Array<Country> => {
   switch (order) {
     case Order.ALPHABETICAL_ASC:
       return sortArrayAlphabetically(countries, 'Country', 'ASC')
@@ -50,7 +50,27 @@ const reorderCountries = (countries: Array<Country>, order: string): any => {
 }
 
 export default {
-  countriesFormated: ({ countries, search, order }: SummaryState): Countries => {
-    return paginate(reorderCountries(searchInCountries(formatCountries(countries), search), order), 20, 1)
+  countriesFormated: ({ countries, search, order, page, perPage }: SummaryState): Countries => {
+    return paginate(reorderCountries(searchInCountries(formatCountries(countries), search), order), perPage, page)
+  },
+  orderOptions: (): Array<OrderOption> => {
+    return [
+      {
+        text: 'Nome do país',
+        value: Order.ALPHABETICAL_ASC
+      },
+      {
+        text: 'Nome do país descrescente',
+        value: Order.ALPHABETICAL_DESC
+      },
+      {
+        text: 'Maior número de casos',
+        value: Order.NUMBER_OF_CASES_DESC
+      },
+      {
+        text: 'Menor número de casos',
+        value: Order.NUMBER_OF_CASES_ASC
+      }
+    ]
   }
 }
