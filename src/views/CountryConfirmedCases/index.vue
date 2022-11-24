@@ -33,9 +33,7 @@
         <v-card-text>
           <CountryConfirmedCasesContent/>
         </v-card-text>
-        <v-footer class="country-confirmed-cases_footer" color="transparent">
-          Fonte: <a href="https://covid19api.com/" target="_blank">COVID 19 API</a>
-        </v-footer>
+        <Covid19APIFooterVue/>
       </v-card>
     </v-dialog>
   </div>
@@ -43,6 +41,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import Covid19APIFooterVue from '@/components/atoms/Covid19APIFooter.vue'
 import CountryConfirmedCasesContent from './CountryConfirmedCasesContent.vue'
 
 export default Vue.extend({
@@ -59,6 +58,7 @@ export default Vue.extend({
     }
   },
   components: {
+    Covid19APIFooterVue,
     CountryConfirmedCasesContent
   }
 })
