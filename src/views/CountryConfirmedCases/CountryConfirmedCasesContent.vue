@@ -1,6 +1,8 @@
 <template>
   <div class="country-confirmed-cases-content mt-5">
-    <h1 class="pb-5 secondary--text">Brasil</h1>
+    <h1 class="pb-5 secondary--text">
+      {{ mock[0].Country }}
+    </h1>
     <h2 class="secondary--text">Casos confirmados nos últimos 5 dias</h2>
     <v-card flat class="mt-5">
       <v-simple-table>
@@ -18,7 +20,7 @@
           <tbody>
             <tr v-for="(country, countryIndex) in mock" :key="countryIndex">
               <td class="country-confirmed-cases-content__date">
-                <strong class="country-confirmed-cases-content__date">{{ country.Date }}</strong>
+                <strong class="country-confirmed-cases-content__date">{{ country.Date | date('DD/MM/YYYY') }}</strong>
               </td>
               <td class="country-confirmed-cases-content__cases">
                 <strong class="country-confirmed-cases-content__cases">{{ country.Cases }}</strong>
