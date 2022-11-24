@@ -1,7 +1,7 @@
 import { Error } from '@/types/SummaryTypes'
 import { CountryStatus } from '@/types/CountryStatusTypes'
 
-export interface CountryCasesState {
+export interface countryStatusState {
   contryName?: string
   countryStatus: CountryStatus
   loading: boolean

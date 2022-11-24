@@ -63,7 +63,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { COUNTRY_CASES_ROUTER_NAME } from '@/router/routers/countryCases'
+import { COUNTRY_STATUS_ROUTER_NAME } from '@/router/routers/countryStatus'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import SummaryCountriesListNotFound from './SummaryCountriesListNotFound.vue'
 import CardStatistic from '@/components/atoms/CardStatistic.vue'
@@ -78,7 +78,7 @@ export default Vue.extend({
     ...mapActions('Summary', ['loadMoreCountries']),
     getCountryRoute (countrySlug: string) {
       return {
-        name: COUNTRY_CASES_ROUTER_NAME,
+        name: COUNTRY_STATUS_ROUTER_NAME,
         params: {
           country: countrySlug
         }

@@ -1,5 +1,5 @@
 <template>
-  <div class="country-confirmed-cases-content mt-5">
+  <div class="country-status-content mt-5">
     <h1 class="pb-5 secondary--text">
       {{ contryName }}
     </h1>
@@ -19,13 +19,13 @@
           </thead>
           <tbody>
             <tr v-for="(country, countryIndex) in countryStatus" :key="countryIndex">
-              <td class="country-confirmed-cases-content__date">
-                <strong class="country-confirmed-cases-content__date">
+              <td class="country-status-content__date">
+                <strong class="country-status-content__date">
                   {{ country.Date | date('DD/MM/YYYY') }}
                 </strong>
               </td>
-              <td class="country-confirmed-cases-content__cases">
-                <strong class="country-confirmed-cases-content__cases">
+              <td class="country-status-content__cases">
+                <strong class="country-status-content__cases">
                   {{ country.Cases | number }}
                 </strong>
               </td>
@@ -42,7 +42,7 @@ import Vue from 'vue'
 import { mapState } from 'vuex'
 
 export default Vue.extend({
-  name: 'CountryCasesContent',
+  name: 'CountryStatusContent',
   computed: {
     ...mapState('CountryStatus', ['contryName', 'countryStatus'])
   }
@@ -50,17 +50,17 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-  .country-confirmed-cases-content {
+  .country-status-content {
     text-align: center;
   }
-  .country-confirmed-cases-content h1 {
+  .country-status-content h1 {
     font-size: 38px;
     line-height: 40px;
   }
-  .country-confirmed-cases-content__date {
+  .country-status-content__date {
     font-size: 18px;
   }
-  .country-confirmed-cases-content__cases {
+  .country-status-content__cases {
     font-size: 25px;
   }
 </style>

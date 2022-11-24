@@ -39,7 +39,7 @@
           <LoadDataError :error="error" @refresh="getCountryStatusConfirmed"/>
         </v-card-text>
         <v-card-text v-else class="country-confirmed-cases_footer__content">
-          <CountryCasesContent/>
+          <CountryStatusContent/>
           <Covid19APIFooterVue/>
         </v-card-text>
       </v-card>
@@ -50,13 +50,13 @@
 <script lang="ts">
 import Vue from 'vue'
 import Loading from '@/components/atoms/Loading.vue'
-import CountryCasesContent from './CountryCasesContent.vue'
+import CountryStatusContent from './CountryStatusContent.vue'
 import LoadDataError from '@/components/atoms/LoadDataError.vue'
 import Covid19APIFooterVue from '@/components/atoms/Covid19APIFooter.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default Vue.extend({
-  name: 'CountryConfirmedCases',
+  name: 'CountryStatus',
   data: () => ({
     dialog: true
   }),
@@ -85,7 +85,7 @@ export default Vue.extend({
     Loading,
     LoadDataError,
     Covid19APIFooterVue,
-    CountryCasesContent
+    CountryStatusContent
   }
 })
 </script>
