@@ -1,11 +1,11 @@
 <template>
   <div class="country-status-content mt-5">
-    <h1 class="pb-5 secondary--text">
+    <h1 id="country-status-content__country-name" class="pb-5 secondary--text">
       {{ contryName }}
     </h1>
-    <h2 class="primary--text">Casos confirmados nos últimos 5 dias</h2>
+    <h2 id="country-status-content__description" class="primary--text">Casos confirmados nos últimos 5 dias</h2>
     <v-card flat class="mt-5">
-      <v-simple-table>
+      <v-simple-table id="country-status-content__table">
         <template v-slot:default>
           <thead>
             <tr>
