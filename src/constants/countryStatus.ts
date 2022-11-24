@@ -1,0 +1,1 @@
+export const COUNTRY_STATUS_DATE_INTERVAL = 5

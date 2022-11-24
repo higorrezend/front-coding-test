@@ -1,0 +1,80 @@
+describe('checking if elements are on screen', () => {
+  it('Access the summary page', () => {
+    cy.visit('http://localhost:8080')
+  })
+  it('checking if the logo is showing', () => {
+    cy.get('#app__covidometro-logo')
+      .find('.v-image__image')
+      .should('have.attr', 'style')
+      .should('include', 'covidometro-logo.png')
+  })
+  it('checking if the refresh button is showing', () => {
+    cy.get('#app__refresh-btn')
+      .find('.v-btn__content')
+      .contains('refresh')
+  })
+  it('checking if the title and subtitle is showing and is correct', () => {
+    cy.get('#summary__title')
+      .contains('Conheça o Covidômetro')
+    cy.get('#summary__sub-title')
+      .contains('Fique atualizado com velocidade e transparência. O Covidômetro é uma ferramenta que mostra para você em tempo real o número de casos e óbitos relacionados a pandemia da COVID-19 ao redor do mundo.')
+  })
+  it('verifying that the search/filter component is showing up correctly', () => {
+    cy.get('#summary-countries-search__title')
+      .contains('Filtrar dados sobre um país')
+    cy.get('#summary-countries-search__text-field')
+      .should('have.attr', 'placeholder')
+      .should('include', 'Digite o nome do país')
+    cy.get('.summary-countries-search__select-order')
+      .find('.v-select__selections')
+      .contains('Maior número de casos')
+  })
+  it('checking if at least one country has been rendered in the view', () => {
+    cy.get('.summary-countries-list')
+      .first()
+      .find('.row')
+      .contains('Total de casos')
+    cy.get('.summary-countries-list')
+      .first()
+      .find('.row')
+      .contains('Mortes')
+    cy.get('.summary-countries-list')
+      .first()
+      .find('.row')
+      .contains('Fatalidade')
+  })
+})
+
+describe('testing how text search works', () => {
+  it('searching for a country to test the search filter', () => {
+    cy.get('#summary-countries-search__text-field')
+      .type('brazil')
+      .should('have.value', 'brazil')
+    cy.get('.summary-countries-list')
+      .first()
+      .find('#summary-countries-list__country-name')
+      .contains('Brazil')
+  })
+})
+
+describe('testing a country status view', () => {
+  it('opening country dialog', () => {
+    cy.get('.summary-countries-list__country-name-btn')
+      .first()
+      .click()
+    cy.get('#country-status-content__description')
+      .contains('Casos confirmados nos últimos 5 dias')
+  })
+  it('checking if the table of values has been rendered', () => {
+    cy.get('#country-status-content__table')
+      .find('th')
+      .contains('Data')
+    cy.get('#country-status-content__table')
+      .find('th')
+      .contains('N° de casos confirmados')
+  })
+  it('closing country dialog', () => {
+    cy.get('#country-status__close-btn')
+      .click()
+  })
+})

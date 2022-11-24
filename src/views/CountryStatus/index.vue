@@ -21,6 +21,7 @@
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
               <v-btn
+                id="country-status__close-btn"
                 icon
                 v-bind="attrs"
                 v-on="on"
@@ -91,11 +92,6 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-  .country-confirmed-cases_footer {
-    text-align: center;
-    display: block;
-    font-size: 15px;
-  }
   .country-confirmed-cases_footer__content {
     height: 500px;
   }
