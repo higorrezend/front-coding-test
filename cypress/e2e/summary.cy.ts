@@ -44,6 +44,7 @@ describe('checking if elements are on screen', () => {
       .contains('Fatalidade')
   })
 })
+
 describe('testing how text search works', () => {
   it('searching for a country to test the search filter', () => {
     cy.get('#summary-countries-search__text-field')
@@ -55,6 +56,7 @@ describe('testing how text search works', () => {
       .contains('Brazil')
   })
 })
+
 describe('testing a country status view', () => {
   it('opening country dialog', () => {
     cy.get('.summary-countries-list__country-name-btn')
