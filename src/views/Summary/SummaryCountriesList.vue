@@ -38,7 +38,7 @@
                 outlined
                 small
                 link
-                :to="getCountryRoute(country.Country)"
+                :to="getCountryRoute(country.Slug)"
               >
                 <v-icon>search</v-icon>
                 <span>Ver Últimos casos confirmados</span>
@@ -76,11 +76,11 @@ export default Vue.extend({
   },
   methods: {
     ...mapActions('Summary', ['loadMoreCountries']),
-    getCountryRoute (countryName: string) {
+    getCountryRoute (countrySlug: string) {
       return {
         name: COUNTRY_CASES_ROUTER_NAME,
         params: {
-          country: countryName
+          country: countrySlug
         }
       }
     }

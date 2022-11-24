@@ -1,9 +1,9 @@
 <template>
   <div class="country-confirmed-cases-content mt-5">
     <h1 class="pb-5 secondary--text">
-      {{ mock[0].Country }}
+      {{ contryName }}
     </h1>
-    <h2 class="secondary--text">Casos confirmados nos últimos 5 dias</h2>
+    <h2 class="primary--text">Casos confirmados nos últimos 5 dias</h2>
     <v-card flat class="mt-5">
       <v-simple-table>
         <template v-slot:default>
@@ -18,7 +18,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(country, countryIndex) in mock" :key="countryIndex">
+            <tr v-for="(country, countryIndex) in countryStatus" :key="countryIndex">
               <td class="country-confirmed-cases-content__date">
                 <strong class="country-confirmed-cases-content__date">
                   {{ country.Date | date('DD/MM/YYYY') }}
@@ -26,7 +26,7 @@
               </td>
               <td class="country-confirmed-cases-content__cases">
                 <strong class="country-confirmed-cases-content__cases">
-                  {{ country.Cases }}
+                  {{ country.Cases | number }}
                 </strong>
               </td>
             </tr>
@@ -39,79 +39,23 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapState } from 'vuex'
 
 export default Vue.extend({
   name: 'CountryCasesContent',
-  data: () => ({
-    mock: JSON.parse(`[
-      {
-        "Country": "Brazil",
-        "CountryCode": "BR",
-        "Province": "",
-        "City": "",
-        "CityCode": "",
-        "Lat": "-14.24",
-        "Lon": "-51.93",
-        "Cases": 0,
-        "Status": "confirmed",
-        "Date": "2020-01-22T00:00:00Z"
-      },
-      {
-        "Country": "Brazil",
-        "CountryCode": "BR",
-        "Province": "",
-        "City": "",
-        "CityCode": "",
-        "Lat": "-14.24",
-        "Lon": "-51.93",
-        "Cases": 0,
-        "Status": "confirmed",
-        "Date": "2020-01-23T00:00:00Z"
-      },
-      {
-        "Country": "Brazil",
-        "CountryCode": "BR",
-        "Province": "",
-        "City": "",
-        "CityCode": "",
-        "Lat": "-14.24",
-        "Lon": "-51.93",
-        "Cases": 0,
-        "Status": "confirmed",
-        "Date": "2020-01-24T00:00:00Z"
-      },
-      {
-        "Country": "Brazil",
-        "CountryCode": "BR",
-        "Province": "",
-        "City": "",
-        "CityCode": "",
-        "Lat": "-14.24",
-        "Lon": "-51.93",
-        "Cases": 0,
-        "Status": "confirmed",
-        "Date": "2020-01-25T00:00:00Z"
-      },
-      {
-        "Country": "Brazil",
-        "CountryCode": "BR",
-        "Province": "",
-        "City": "",
-        "CityCode": "",
-        "Lat": "-14.24",
-        "Lon": "-51.93",
-        "Cases": 0,
-        "Status": "confirmed",
-        "Date": "2020-01-26T00:00:00Z"
-      }
-    ]`)
-  })
+  computed: {
+    ...mapState('CountryStatus', ['contryName', 'countryStatus'])
+  }
 })
 </script>
 
 <style scoped>
   .country-confirmed-cases-content {
     text-align: center;
+  }
+  .country-confirmed-cases-content h1 {
+    font-size: 38px;
+    line-height: 40px;
   }
   .country-confirmed-cases-content__date {
     font-size: 18px;
