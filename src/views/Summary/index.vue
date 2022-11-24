@@ -29,6 +29,7 @@
         <SummaryCountriesList></SummaryCountriesList>
       </v-col>
     </v-row>
+    <router-view/>
   </v-container>
 </template>
 

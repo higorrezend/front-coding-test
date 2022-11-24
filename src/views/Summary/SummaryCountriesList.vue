@@ -7,7 +7,7 @@
         class="summary-countries-search elevation-1 pa-2 mb-5"
       >
         <v-card-text>
-          <h2 class="secondary--text mt-5 mb-5 d-flex justify-center">
+          <h2 class="secondary--text mt-5 mb-8 d-flex justify-center">
             {{ country.Country }}
           </h2>
           <v-row>
@@ -15,7 +15,6 @@
               <CardStatistic
                 label="Total de casos"
                 :number="country.TotalConfirmed"
-                :route="{name: 'asdasd'}"
               ></CardStatistic>
             </v-col>
             <v-divider :vertical="!$vuetify.breakpoint.xs" :inset="!$vuetify.breakpoint.xs"></v-divider>
@@ -32,6 +31,23 @@
                 :number="country.fatalities"
                 appendNumber="%"
               ></CardStatistic>
+            </v-col>
+            <v-col cols="12" class="mt-5" style="text-align: center;">
+              <v-btn
+                color="secondary"
+                outlined
+                small
+                link
+                :to="{
+                  name: 'country-confirmed-cases',
+                  params: {
+                    country: country.Country
+                  }
+                }"
+              >
+                <v-icon>search</v-icon>
+                <span>Ver Últimos casos confirmados</span>
+              </v-btn>
             </v-col>
           </v-row>
         </v-card-text>
