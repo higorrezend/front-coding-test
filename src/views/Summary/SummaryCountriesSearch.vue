@@ -55,3 +55,9 @@ export default Vue.extend({
   }
 })
 </script>
+
+<style scoped>
+  #summary-countries-search__title {
+    text-align: center;
+  }
+</style>
