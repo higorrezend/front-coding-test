@@ -14,6 +14,7 @@ export abstract class Covid19ApiService {
   private createAxiosInstance (): void {
     this.instance = axios.create({
       baseURL: COVID19_API_BASE_URL,
+      timeout: 10000,
       headers: {
         'Content-Type': 'application/json'
       }
