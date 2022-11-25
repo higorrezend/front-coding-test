@@ -10,10 +10,8 @@
 
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                text
-                block
-                x-large
+              <v-card
+                flat
                 v-bind="attrs"
                 v-on="on"
                 class="summary-countries-list__country-name-btn mb-8"
@@ -23,9 +21,9 @@
                 <h2 id="summary-countries-list__country-name" class="secondary--text d-flex justify-center">
                   {{ country.Country }}
                 </h2>
-              </v-btn>
+              </v-card>
             </template>
-            <span>Ver Últimos casos confirmados</span>
+            <span>Ver últimos casos confirmados</span>
           </v-tooltip>
           <v-row>
             <v-col cols="12" sm="4" md="4" lg="4" xl="4">
@@ -104,5 +102,13 @@ export default Vue.extend({
   }
   .summary-countries-list__country-name-btn {
     text-transform: capitalize;
+    white-space: pre-line;
+    text-align: center;
+    word-wrap: break-word;
+  }
+  #summary-countries-list__country-name {
+    white-space: pre-line;
+    text-align: center;
+    word-wrap: break-word;
   }
 </style>
